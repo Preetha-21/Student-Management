@@ -20,7 +20,6 @@
 
     <div class="container">
         <div class="row">
-            <!-- Add Student Form -->
             <div class="col-md-4">
                 <div class="card">
                     <h5>Add Student</h5>
@@ -54,7 +53,6 @@
     </div>
 
     <script>
-        // Load students
         function loadStudents(search = "") {
             fetch('/api/students?search=' + search)
                 .then(res => res.json())
@@ -90,7 +88,7 @@
             }).then(() => { form.reset(); loadStudents(); });
         });
 
-        // Delete student
+   
         function deleteStudent(id) {
             if (confirm("Are you sure?")) {
                 fetch('/api/students/' + id, { method: 'DELETE' }).then(() => loadStudents());

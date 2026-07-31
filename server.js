@@ -15,7 +15,7 @@ app.use(session({
     saveUninitialized:true
 }));
 
-/* ROUTES */
+
 app.get('/', (req,res)=> res.sendFile(path.join(__dirname,'public/register.html')));
 app.get('/login', (req,res)=> res.sendFile(path.join(__dirname,'public/login.html')));
 app.get('/dashboard', (req,res)=> res.sendFile(path.join(__dirname,'public/dashboard.html')));
@@ -28,7 +28,7 @@ app.post('/register',(req,res)=>{
     ()=> res.redirect('/login'));
 });
 
-/* LOGIN */
+
 app.post('/login',(req,res)=>{
     const {name,password} = req.body;
     db.query("SELECT * FROM faculty WHERE name=? AND password=?",
@@ -47,7 +47,7 @@ app.get('/logout',(req,res)=>{
     req.session.destroy(()=> res.redirect('/login'));
 });
 
-/* API: GET STUDENTS */
+
 app.get('/api/students',(req,res)=>{
     if(!req.session.subject) return res.status(401).send("Unauthorized");
     let search = req.query.search || "";

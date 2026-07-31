@@ -20,7 +20,7 @@ app.get('/', (req,res)=> res.sendFile(path.join(__dirname,'public/register.html'
 app.get('/login', (req,res)=> res.sendFile(path.join(__dirname,'public/login.html')));
 app.get('/dashboard', (req,res)=> res.sendFile(path.join(__dirname,'public/dashboard.html')));
 
-/* REGISTER */
+
 app.post('/register',(req,res)=>{
     const {name,password,subject} = req.body;
     db.query("INSERT INTO faculty(name,password,subject) VALUES(?,?,?)",
@@ -42,7 +42,7 @@ app.post('/login',(req,res)=>{
     });
 });
 
-/* LOGOUT */
+
 app.get('/logout',(req,res)=>{
     req.session.destroy(()=> res.redirect('/login'));
 });
@@ -56,7 +56,7 @@ app.get('/api/students',(req,res)=>{
     (err,data)=> res.json(data));
 });
 
-/* API: ADD STUDENT */
+
 app.post('/api/students',(req,res)=>{
     if(!req.session.subject) return res.status(401).send("Unauthorized");
     const {rollno,name,marks} = req.body;
@@ -65,14 +65,12 @@ app.post('/api/students',(req,res)=>{
     ()=> res.send({status:"success"}));
 });
 
-/* API: DELETE STUDENT */
 app.delete('/api/students/:id',(req,res)=>{
     if(!req.session.subject) return res.status(401).send("Unauthorized");
     db.query("DELETE FROM students WHERE id=?",[req.params.id],
     ()=> res.send({status:"deleted"}));
 });
 
-/* API: UPDATE STUDENT */
 app.put('/api/students/:id',(req,res)=>{
     if(!req.session.subject) return res.status(401).send("Unauthorized");
     const {rollno,name,marks} = req.body;

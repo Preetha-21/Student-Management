@@ -1,6 +1,6 @@
 # Student Management System
 
-A full-stack Student Management System developed using Node.js, Express.js, MySQL, HTML,CSS, Bootstrap, and JavaScript. The application enables faculty members to securely manage student records based on their assigned subjects.
+A full-stack Student Management System developed using Node.js, MySQL, HTML,CSS, Bootstrap, and JavaScript. The application enables faculty members to securely manage student records based on their assigned subjects.
 
 ## 🚀 Features
 

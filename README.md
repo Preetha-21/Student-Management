@@ -40,7 +40,7 @@ Student-Management-System/
 └── README.md
 ```
 
-## ⚙️ Installation
+
 
 ### 1. Clone the repository
 
